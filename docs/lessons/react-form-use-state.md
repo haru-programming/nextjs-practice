@@ -1,10 +1,10 @@
-# React のフォーム入門: useState で入力・送信・バリデーションを扱う
+# Reactのフォーム入門: useStateで入力・送信・バリデーションを扱う
 
 ## 今回学ぶこと
 
-React のフォームでは、入力値を state として持ち、送信時に自分で処理を行います。
+Reactのフォームでは、入力値をstateとして持ち、送信時に自分で処理を行う。
 
-今回は次の流れを実装しました。
+今回は次の流れを実装した。
 
 ```txt
 input の値を state に入れる
@@ -16,19 +16,19 @@ form の送信を止める
 送信後のメッセージを表示する
 ```
 
-## input の値を state に入れる
+## inputの値をstateに入れる
 
-まず、名前入力用の state を作りました。
+まず、名前入力用のstateを作った。
 
 ```tsx
 const [name, setName] = useState<string>("");
 ```
 
-`name` は現在入力されている文字列です。
+`name`は現在入力されている文字列である。
 
-`setName` は、`name` を更新するための関数です。
+`setName`は、`name`を更新するための関数である。
 
-input には `value` と `onChange` を設定しました。
+inputには`value`と`onChange`を設定した。
 
 ```tsx
 <input
@@ -37,21 +37,21 @@ input には `value` と `onChange` を設定しました。
 />
 ```
 
-`value={name}` は、input に React の state を表示する指定です。
+`value={name}`は、inputにReactのstateを表示する指定である。
 
-`onChange` は、入力内容が変わるたびに実行されるイベントです。
+`onChange`は、入力内容が変わるたびに実行されるイベントである。
 
-`event.target.value` には、今 input に入力されている文字列が入っています。
+`event.target.value`には、今inputに入力されている文字列が入っている。
 
 ```tsx
 onChange={(event) => setName(event.target.value)}
 ```
 
-このコードにより、入力するたびに `name` state が更新されます。
+このコードにより、入力するたびに`name`stateが更新される。
 
 ## 入力内容に応じて表示を変える
 
-`name` があるときだけ、挨拶文を表示しました。
+`name`があるときだけ、挨拶文を表示した。
 
 ```tsx
 {name && (
@@ -59,13 +59,13 @@ onChange={(event) => setName(event.target.value)}
 )}
 ```
 
-これは「`name` が空ではないときだけ表示する」という意味です。
+これは「`name`が空ではないときだけ表示する」という意味である。
 
-## form の送信を止める
+## formの送信を止める
 
-HTML の `form` は、送信するとページを再読み込みしようとします。
+HTMLの`form`は、送信するとページを再読み込みしようとする。
 
-React では、多くの場合この標準動作を止めて、自分で送信処理を書きます。
+Reactでは、多くの場合この標準動作を止めて、自分で送信処理を書く。
 
 ```tsx
 function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
@@ -73,29 +73,29 @@ function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
 }
 ```
 
-`event.preventDefault()` は、form の標準送信を止めるための処理です。
+`event.preventDefault()`は、formの標準送信を止めるための処理である。
 
-`event: React.SyntheticEvent<HTMLFormElement>` は、form で起きた React のイベントを受け取るための型です。
+`event: React.SyntheticEvent<HTMLFormElement>`は、formで起きたReactのイベントを受け取るための型である。
 
-## onSubmit で送信処理を呼ぶ
+## onSubmitで送信処理を呼ぶ
 
-form に `onSubmit` を設定しました。
+formに`onSubmit`を設定した。
 
 ```tsx
 <form className="mt-6" onSubmit={handleSubmit}>
 ```
 
-送信ボタンは `type="submit"` にします。
+送信ボタンは`type="submit"`にする。
 
 ```tsx
 <button type="submit">詳細を見る</button>
 ```
 
-このボタンを押すと、form の `onSubmit` が実行され、`handleSubmit` が呼ばれます。
+このボタンを押すと、formの`onSubmit`が実行され、`handleSubmit`が呼ばれる。
 
 ## 入力必須チェック
 
-名前が空の場合は、送信処理を止めるようにしました。
+名前が空の場合は、送信処理を止めるようにした。
 
 ```tsx
 if (!name) {
@@ -104,23 +104,23 @@ if (!name) {
 }
 ```
 
-`return` を書くことで、それ以降の処理を実行せずに関数を終了できます。
+`return`を書くことで、それ以降の処理を実行せずに関数を終了できる。
 
-## 送信完了 UI を表示する
+## 送信完了UIを表示する
 
-送信できたかどうかを管理する state を作りました。
+送信できたかどうかを管理するstateを作った。
 
 ```tsx
 const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 ```
 
-送信に成功したら `true` にします。
+送信に成功したら`true`にする。
 
 ```tsx
 setIsSubmitted(true);
 ```
 
-そして、`isSubmitted` が true のときだけメッセージを表示します。
+そして、`isSubmitted`がtrueのときだけメッセージを表示する。
 
 ```tsx
 {isSubmitted && (
@@ -132,9 +132,9 @@ setIsSubmitted(true);
 
 ## まとめ
 
-React のフォームでは、入力値や送信状態を state として管理します。
+Reactのフォームでは、入力値や送信状態をstateとして管理する。
 
-今回の流れは次の通りです。
+今回の流れは次の通りである。
 
 ```txt
 useState で入力値を持つ
@@ -150,4 +150,4 @@ preventDefault でページ再読み込みを止める
 送信完了メッセージを表示する
 ```
 
-これが、React でフォームを扱う基本の流れです。
+これが、Reactでフォームを扱う基本の流れである。
