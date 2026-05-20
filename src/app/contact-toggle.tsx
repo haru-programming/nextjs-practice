@@ -5,6 +5,7 @@ import { useState } from "react";
 export function ContactToggle() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -15,6 +16,7 @@ export function ContactToggle() {
     }
 
     setIsOpen(true);
+    setIsSubmitted(true);
   }
 
   return (
@@ -40,6 +42,11 @@ export function ContactToggle() {
       {isOpen && (
         <p className="mt-4 text-zinc-300">
           初回相談では、目的、必要なページ、公開希望時期を一緒に整理します。
+        </p>
+      )}
+      {isSubmitted && (
+        <p className="mt-4 bg-teal-900/40 p-4 text-sm text-teal-100">
+          {name}さん、送信準備ができました。
         </p>
       )}
     </form>

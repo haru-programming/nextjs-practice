@@ -221,7 +221,7 @@
 - [x] Lesson 33: input の値を state に入れる
 - [x] Lesson 34: form の送信を止める
 - [x] Lesson 35: 入力必須チェックを作る
-- [ ] Lesson 36: 送信完了 UI を表示する
+- [x] Lesson 36: 送信完了 UI を表示する
 - [ ] Lesson 37: Client Component にする範囲を考える
 
 完了条件:
