@@ -219,8 +219,8 @@
 - [x] Lesson 31: ボタンを押すと表示が変わる
 - [x] Lesson 32: `useState` に型をつける
 - [x] Lesson 33: input の値を state に入れる
-- [ ] Lesson 34: form の送信を止める
-- [ ] Lesson 35: 入力必須チェックを作る
+- [x] Lesson 34: form の送信を止める
+- [x] Lesson 35: 入力必須チェックを作る
 - [ ] Lesson 36: 送信完了 UI を表示する
 - [ ] Lesson 37: Client Component にする範囲を考える
 

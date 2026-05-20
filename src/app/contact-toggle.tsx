@@ -6,8 +6,19 @@ export function ContactToggle() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
 
+  function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!name) {
+      alert("お名前を入力してください");
+      return;
+    }
+
+    setIsOpen(true);
+  }
+
   return (
-    <div className="mt-6">
+    <form className="mt-6" onSubmit={handleSubmit}>
       <label className="block text-sm font-semibold text-zinc-200">
         お名前
         <input
@@ -21,8 +32,7 @@ export function ContactToggle() {
         <p className="mt-3 text-sm text-zinc-300">{name}さん、こんにちは。</p>
       )}
       <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        type="submit"
         className="inline-flex h-11 items-center justify-center bg-white px-5 text-sm font-semibold text-zinc-950 hover:bg-zinc-200"
       >
         {isOpen ? "閉じる" : "詳細を見る"}
@@ -32,6 +42,6 @@ export function ContactToggle() {
           初回相談では、目的、必要なページ、公開希望時期を一緒に整理します。
         </p>
       )}
-    </div>
+    </form>
   );
 }
