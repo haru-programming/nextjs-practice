@@ -1,3 +1,5 @@
+//"use client"は、クライアントページで操作がある最小のコンポーネントにつけるので、トップの静的に表示するページにはつけない
+
 import Link from "next/link";
 import { ContactToggle } from "./contact-toggle";
 

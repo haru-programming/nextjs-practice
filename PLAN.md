@@ -223,7 +223,7 @@
 - [x] Lesson 34: form の送信を止める
 - [x] Lesson 35: 入力必須チェックを作る
 - [x] Lesson 36: 送信完了 UI を表示する
-- [ ] Lesson 37: Client Component にする範囲を考える
+- [x] Lesson 37: Client Component にする範囲を考える
 
 完了条件:
 
@@ -327,18 +327,18 @@
 
 ## 現在の次の課題
 
-次は Lesson 33 です。
+次は Lesson 38 です。
 
-目的: input の値を state に入れ、入力に応じて画面が更新される流れを理解する。
+目的: `ServiceCard` を別ファイルに移し、コンポーネント分割の基本を理解する。
 
 書くコード:
 
 ```tsx
-const [name, setName] = useState<string>("");
+export function ServiceCard({ title, description, price }: ServiceCardProps) {
 ```
 
 理解すること:
 
-- input の `value` に state を渡す。
-- `onChange` で入力値を state に保存する。
-- `useState<string>` は文字列の state を持つ書き方。
+- 何度も使うUIはコンポーネントとして別ファイルに切り出せる。
+- `export`すると他のファイルから読み込める。
+- ファイル分割すると、ページ本体が読みやすくなる。
