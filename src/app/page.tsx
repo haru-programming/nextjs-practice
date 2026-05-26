@@ -3,36 +3,10 @@
 import Link from "next/link";
 import { ContactToggle } from "./contact-toggle";
 import { ServiceCard } from "@/components/service-card";
+import { services } from "@/data/services";
 
 const studioName = "Studio Cloud";
 const mainMessage = "事業の魅力が伝わるWebサイトを作ります。";
-
-type ServiceCardProps = {
-  title: string;
-  description: string;
-  price: string;
-};
-
-const services: ServiceCardProps[] = [
-  {
-    title: "コーポレートサイト制作",
-    description:
-      "会社の強みや問い合わせ導線を整理して、信頼感のあるWebサイトに仕上げます。",
-    price: "80万円から",
-  },
-  {
-    title: "LP制作",
-    description:
-      "広告やキャンペーンの目的に合わせて、申し込みにつながるページを作ります。",
-    price: "35万円から",
-  },
-  {
-    title: "運用改善",
-    description:
-      "公開後のアクセス解析や改善提案を行い、成果につながるWebサイトに育てます。",
-    price: "月額12万円から",
-  },
-];
 
 export default function Home() {
   return (

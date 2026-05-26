@@ -253,7 +253,7 @@
 レッスン:
 
 - [x] Lesson 38: `ServiceCard` を別ファイルに移す
-- [ ] Lesson 39: `services` を `src/data/services.ts` に移す
+- [x] Lesson 39: `services` を `src/data/services.ts` に移す
 - [ ] Lesson 40: 型を `src/types` に移す
 - [ ] Lesson 41: import / export を整理する
 - [ ] Lesson 42: Header と Footer を共通化する
@@ -327,18 +327,22 @@
 
 ## 現在の次の課題
 
-次は Lesson 39 です。
+次は Lesson 40 です。
 
-目的: `services`配列を`src/data/services.ts`に移し、表示データをページから分離する。
+目的: `Service`型を`src/types/service.ts`に移し、データと型を分離する。
 
 書くコード:
 
 ```tsx
-export const services: ServiceCardProps[] = [
+export type Service = {
+  title: string;
+  description: string;
+  price: string;
+};
 ```
 
 理解すること:
 
-- 表示データは`src/data`に分けると管理しやすい。
-- ページはレイアウトと読み込みに集中できる。
-- 次のLessonで型も`src/types`へ分離する。
+- 型は`src/types`へ置くと再利用しやすい。
+- データファイルでは`import type`で型だけを読み込む。
+- `components`、`data`、`types`の役割が分かれる。

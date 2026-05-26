@@ -21,6 +21,8 @@ src/types
 
 Lesson38では、`ServiceCard`を`src/components`に切り出した。
 
+Lesson39では、`services`配列を`src/data/services.ts`に切り出した。
+
 ## コンポーネントを別ファイルに移す
 
 もともと`ServiceCard`は`src/app/page.tsx`の中に書いていた。
@@ -120,3 +122,55 @@ page.tsxでimportする
 ```
 
 これが、Next.jsでコンポーネントを分割する基本の流れである。
+
+## データを別ファイルに移す
+
+`ServiceCard`を切り出したあと、サービス一覧のデータも`page.tsx`から分離した。
+
+```txt
+src/data/services.ts
+```
+
+このファイルには、サービス一覧として表示するデータを置く。
+
+```tsx
+type Service = {
+  title: string;
+  description: string;
+  price: string;
+};
+
+export const services: Service[] = [
+  {
+    title: "コーポレートサイト制作",
+    description:
+      "会社の強みや問い合わせ導線を整理して、信頼感のあるWebサイトに仕上げます。",
+    price: "80万円から",
+  },
+];
+```
+
+`export const services`と書くことで、他のファイルからサービスデータを読み込める。
+
+## page.tsxでデータを読み込む
+
+`page.tsx`では、`services`をimportして使う。
+
+```tsx
+import { services } from "@/data/services";
+```
+
+これにより、`page.tsx`からデータ定義が消え、ページ本体が読みやすくなった。
+
+```txt
+page.tsx
+ページ全体の構成
+
+service-card.tsx
+カードUI
+
+services.ts
+サービスの表示データ
+```
+
+コンポーネントとデータを分けることで、UIを直したいときは`components`、表示内容を直したいときは`data`を見る、という判断がしやすくなる。
