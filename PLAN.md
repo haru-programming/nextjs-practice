@@ -254,7 +254,7 @@
 
 - [x] Lesson 38: `ServiceCard` を別ファイルに移す
 - [x] Lesson 39: `services` を `src/data/services.ts` に移す
-- [ ] Lesson 40: 型を `src/types` に移す
+- [x] Lesson 40: 型を `src/types` に移す
 - [ ] Lesson 41: import / export を整理する
 - [ ] Lesson 42: Header と Footer を共通化する
 
@@ -327,22 +327,20 @@
 
 ## 現在の次の課題
 
-次は Lesson 40 です。
+次は Lesson 41 です。
 
-目的: `Service`型を`src/types/service.ts`に移し、データと型を分離する。
+目的: import/exportを整理し、named exportとimport typeの使い分けを復習する。
 
 書くコード:
 
 ```tsx
-export type Service = {
-  title: string;
-  description: string;
-  price: string;
-};
+import { ServiceCard } from "@/components/service-card";
+import { services } from "@/data/services";
+import type { Service } from "@/types/service";
 ```
 
 理解すること:
 
-- 型は`src/types`へ置くと再利用しやすい。
-- データファイルでは`import type`で型だけを読み込む。
-- `components`、`data`、`types`の役割が分かれる。
+- 値を読み込むときは通常の`import`を使う。
+- 型だけを読み込むときは`import type`を使う。
+- `export function`や`export const`はnamed exportである。

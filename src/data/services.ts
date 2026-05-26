@@ -1,8 +1,4 @@
-type Service = {
-  title: string;
-  description: string;
-  price: string;
-};
+import type { Service } from "@/types/service";
 
 export const services: Service[] = [
   {

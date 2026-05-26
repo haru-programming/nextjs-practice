@@ -174,3 +174,71 @@ services.ts
 ```
 
 コンポーネントとデータを分けることで、UIを直したいときは`components`、表示内容を直したいときは`data`を見る、という判断がしやすくなる。
+
+## 型を別ファイルに移す
+
+Lesson40では、`Service`型を`src/types/service.ts`に移した。
+
+```txt
+src/types/service.ts
+```
+
+型定義は次のように書く。
+
+```tsx
+export type Service = {
+  title: string;
+  description: string;
+  price: string;
+};
+```
+
+`export type`を使うことで、他のファイルから`Service`型を読み込める。
+
+## dataファイルで型を読み込む
+
+`src/data/services.ts`では、`Service`型を`import type`で読み込む。
+
+```tsx
+import type { Service } from "@/types/service";
+```
+
+`import type`は、型だけを読み込むための書き方である。
+
+実行時に使う値ではなく、TypeScriptの型チェックにだけ使う。
+
+その上で、`services`配列に型を付ける。
+
+```tsx
+export const services: Service[] = [
+  {
+    title: "コーポレートサイト制作",
+    description:
+      "会社の強みや問い合わせ導線を整理して、信頼感のあるWebサイトに仕上げます。",
+    price: "80万円から",
+  },
+];
+```
+
+これにより、`services`配列の各データは`Service`型に合っている必要がある。
+
+例えば`price`を書き忘れると、TypeScriptがエラーとして教えてくれる。
+
+## components・data・typesの役割
+
+ここまでで、ファイルの役割は次のように分かれた。
+
+```txt
+src/components/service-card.tsx
+カードUI
+
+src/data/services.ts
+サービスの表示データ
+
+src/types/service.ts
+サービスデータの型
+```
+
+役割を分けることで、コードの見通しがよくなる。
+
+UIを直すなら`components`、表示内容を直すなら`data`、データの形を直すなら`types`を見る、という判断ができる。
