@@ -252,7 +252,7 @@
 
 レッスン:
 
-- [ ] Lesson 38: `ServiceCard` を別ファイルに移す
+- [x] Lesson 38: `ServiceCard` を別ファイルに移す
 - [ ] Lesson 39: `services` を `src/data/services.ts` に移す
 - [ ] Lesson 40: 型を `src/types` に移す
 - [ ] Lesson 41: import / export を整理する
@@ -327,18 +327,18 @@
 
 ## 現在の次の課題
 
-次は Lesson 38 です。
+次は Lesson 39 です。
 
-目的: `ServiceCard` を別ファイルに移し、コンポーネント分割の基本を理解する。
+目的: `services`配列を`src/data/services.ts`に移し、表示データをページから分離する。
 
 書くコード:
 
 ```tsx
-export function ServiceCard({ title, description, price }: ServiceCardProps) {
+export const services: ServiceCardProps[] = [
 ```
 
 理解すること:
 
-- 何度も使うUIはコンポーネントとして別ファイルに切り出せる。
-- `export`すると他のファイルから読み込める。
-- ファイル分割すると、ページ本体が読みやすくなる。
+- 表示データは`src/data`に分けると管理しやすい。
+- ページはレイアウトと読み込みに集中できる。
+- 次のLessonで型も`src/types`へ分離する。
