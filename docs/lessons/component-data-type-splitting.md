@@ -242,3 +242,62 @@ src/types/service.ts
 役割を分けることで、コードの見通しがよくなる。
 
 UIを直すなら`components`、表示内容を直すなら`data`、データの形を直すなら`types`を見る、という判断ができる。
+
+## import/exportを整理する
+
+Lesson41では、`import`と`export`の使い分けを整理した。
+
+通常の`import`は、実行時に使う値を読み込むときに使う。
+
+```tsx
+import { ServiceCard } from "@/components/service-card";
+import { services } from "@/data/services";
+```
+
+`ServiceCard`は画面に表示する関数コンポーネントである。
+
+`services`は画面に表示する配列データである。
+
+どちらも実行時に使う値なので、通常の`import`で読み込む。
+
+一方、型だけを読み込むときは`import type`を使う。
+
+```tsx
+import type { Service } from "@/types/service";
+```
+
+`Service`はTypeScriptの型チェックに使うものであり、実行時に画面へ表示する値ではない。
+
+そのため`import type`で読み込む。
+
+## named exportとは
+
+次のように名前を付けてexportする書き方をnamed exportと呼ぶ。
+
+```tsx
+export function ServiceCard() {}
+```
+
+```tsx
+export const services = [];
+```
+
+named exportしたものは、import側で`{}`を使って読み込む。
+
+```tsx
+import { ServiceCard } from "@/components/service-card";
+import { services } from "@/data/services";
+```
+
+今回の整理は次の通りである。
+
+```txt
+ServiceCard
+値なので通常のimport
+
+services
+値なので通常のimport
+
+Service
+型なのでimport type
+```

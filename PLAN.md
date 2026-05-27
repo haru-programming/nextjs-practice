@@ -255,7 +255,7 @@
 - [x] Lesson 38: `ServiceCard` を別ファイルに移す
 - [x] Lesson 39: `services` を `src/data/services.ts` に移す
 - [x] Lesson 40: 型を `src/types` に移す
-- [ ] Lesson 41: import / export を整理する
+- [x] Lesson 41: import / export を整理する
 - [ ] Lesson 42: Header と Footer を共通化する
 
 完了条件:
@@ -327,20 +327,18 @@
 
 ## 現在の次の課題
 
-次は Lesson 41 です。
+次は Lesson 42 です。
 
-目的: import/exportを整理し、named exportとimport typeの使い分けを復習する。
+目的: HeaderとFooterを共通コンポーネントに切り出し、ページ共通UIを整理する。
 
 書くコード:
 
 ```tsx
-import { ServiceCard } from "@/components/service-card";
-import { services } from "@/data/services";
-import type { Service } from "@/types/service";
+export function Header() {
 ```
 
 理解すること:
 
-- 値を読み込むときは通常の`import`を使う。
-- 型だけを読み込むときは`import type`を使う。
-- `export function`や`export const`はnamed exportである。
+- 複数ページで使うHeaderやFooterは`src/components`へ切り出す。
+- 共通UIを分けると、ページ側の見通しがよくなる。
+- 次のフェーズの品質チェック前に構成を整理する。
