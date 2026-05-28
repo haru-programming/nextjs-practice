@@ -256,7 +256,7 @@
 - [x] Lesson 39: `services` を `src/data/services.ts` に移す
 - [x] Lesson 40: 型を `src/types` に移す
 - [x] Lesson 41: import / export を整理する
-- [ ] Lesson 42: Header と Footer を共通化する
+- [x] Lesson 42: Header と Footer を共通化する
 
 完了条件:
 
@@ -327,18 +327,18 @@
 
 ## 現在の次の課題
 
-次は Lesson 42 です。
+次は Lesson 43 です。
 
-目的: HeaderとFooterを共通コンポーネントに切り出し、ページ共通UIを整理する。
+目的: `npm run lint`を読み、コード品質チェックの基本を理解する。
 
 書くコード:
 
 ```tsx
-export function Header() {
+npm run lint
 ```
 
 理解すること:
 
-- 複数ページで使うHeaderやFooterは`src/components`へ切り出す。
-- 共通UIを分けると、ページ側の見通しがよくなる。
-- 次のフェーズの品質チェック前に構成を整理する。
+- lintはコードの書き方や危ない書き方をチェックする。
+- エラーとwarningの違いを読む。
+- 納品前にはlintを通す習慣をつける。

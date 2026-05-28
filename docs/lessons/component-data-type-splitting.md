@@ -301,3 +301,77 @@ services
 Service
 型なのでimport type
 ```
+
+## HeaderとFooterを共通コンポーネントにする
+
+Lesson42では、`page.tsx`に直接書いていたHeaderとFooterを`src/components`に切り出した。
+
+```txt
+src/components/header.tsx
+src/components/footer.tsx
+```
+
+Headerはサイト上部の共通UIである。
+
+```tsx
+type HeaderProps = {
+  studioName: string;
+};
+
+export function Header({ studioName }: HeaderProps) {
+  return (
+    <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/90 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
+        <Link href="/" className="text-lg font-bold">
+          {studioName}
+        </Link>
+      </div>
+    </header>
+  );
+}
+```
+
+Footerはサイト下部の共通UIである。
+
+```tsx
+type FooterProps = {
+  studioName: string;
+};
+
+export function Footer({ studioName }: FooterProps) {
+  return (
+    <footer className="border-t border-zinc-200 bg-white">
+      <div className="mx-auto flex max-w-5xl flex-col gap-3 px-5 py-8 text-sm text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-semibold text-zinc-950">{studioName}</p>
+        <p>© 2026 {studioName}. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+}
+```
+
+`studioName`はpropsとして外から渡している。
+
+```tsx
+<Header studioName={studioName} />
+<Footer studioName={studioName} />
+```
+
+こうすると、HeaderとFooterの中身を変更したいときは、それぞれのコンポーネントファイルを見ればよい。
+
+## page.tsxの役割を小さくする
+
+HeaderとFooterを切り出すことで、`page.tsx`はページ全体の構成に集中できる。
+
+```txt
+page.tsx
+ページ全体の組み立て
+
+header.tsx
+サイト上部の共通UI
+
+footer.tsx
+サイト下部の共通UI
+```
+
+共通UIをコンポーネントにしておくと、今後ページが増えたときにも再利用しやすい。

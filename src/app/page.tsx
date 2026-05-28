@@ -1,6 +1,7 @@
 //"use client"は、クライアントページで操作がある最小のコンポーネントにつけるので、トップの静的に表示するページにはつけない
 
-import Link from "next/link";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import { ContactToggle } from "./contact-toggle";
 import { ServiceCard } from "@/components/service-card";
 import { services } from "@/data/services";
@@ -11,22 +12,7 @@ const mainMessage = "事業の魅力が伝わるWebサイトを作ります。";
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-50 text-zinc-950">
-      <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
-          <Link href="/" className="text-lg font-bold">
-            {studioName}
-          </Link>
-
-          <nav className="hidden gap-6 text-sm font-medium text-zinc-600 sm:flex">
-            <Link href="/services" className="hover:text-zinc-950">
-              Service
-            </Link>
-            <a href="#contact" className="hover:text-zinc-950">
-              Contact
-            </a>
-          </nav>
-        </div>
-      </header>
+      <Header studioName={studioName} />
 
       <section className="bg-white">
         <div className="mx-auto max-w-5xl px-5 py-20">
@@ -84,12 +70,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-zinc-200 bg-white">
-        <div className="mx-auto flex max-w-5xl flex-col gap-3 px-5 py-8 text-sm text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-semibold text-zinc-950">{studioName}</p>
-          <p>© 2026 {studioName}. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer studioName={studioName} />
     </main>
   );
 }
