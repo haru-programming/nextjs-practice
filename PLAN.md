@@ -281,7 +281,7 @@
 
 レッスン:
 
-- [ ] Lesson 43: `npm run lint` を読む
+- [x] Lesson 43: `npm run lint` を読む
 - [ ] Lesson 44: `npm run build` を通す
 - [ ] Lesson 45: title / description を設定する
 - [ ] Lesson 46: OGP 情報を設定する
@@ -327,18 +327,18 @@
 
 ## 現在の次の課題
 
-次は Lesson 43 です。
+次は Lesson 44 です。
 
-目的: `npm run lint`を読み、コード品質チェックの基本を理解する。
+目的: `npm run build`を通し、本番用にビルドできる状態か確認する。
 
 書くコード:
 
 ```tsx
-npm run lint
+npm run build
 ```
 
 理解すること:
 
-- lintはコードの書き方や危ない書き方をチェックする。
-- エラーとwarningの違いを読む。
-- 納品前にはlintを通す習慣をつける。
+- buildは本番公開用のファイルを作る確認である。
+- lintでは見つからない型やビルド時の問題が出ることがある。
+- 納品前にはlintとbuildの両方を通す。
